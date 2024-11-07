@@ -169,6 +169,7 @@ h2::after {
     border-radius: 5px;
 }
 
+
 .taxonomy-container {
     display: flex;
     flex-direction: column;
@@ -372,7 +373,7 @@ h2::after {
 .results-summary li {
     flex: 1;
     display: flex;
-    align-items: flex-start; /* 변경: center에서 flex-start로 */
+    align-items: flex-start; 
     padding: 10px 0;
 }
 
@@ -380,8 +381,8 @@ h2::after {
     content: "- ";
     margin-right: 10px;
     color: var(--accent-color);
-    flex-shrink: 0; /* 추가: 불릿이 줄바꿈되지 않도록 */
-    padding-top: 2px; /* 추가: 불릿을 약간 아래로 내림 */
+    flex-shrink: 0; 
+    padding-top: 2px; 
 }
 
 footer {
@@ -474,4 +475,12 @@ footer {
     height: auto;
     max-height: 370px;
     object-fit: contain;
+}
+
+.tag-tooltip li::before {
+    content: attr(data-agreement);
+    font-weight: bold;
+    color: var(--accent-color);
+    display: block;
+    margin-bottom: 0.5rem;
 }
