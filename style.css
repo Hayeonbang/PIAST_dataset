@@ -175,6 +175,11 @@ h2::after {
     max-width: 1200px; 
     margin: 0 auto; 
 }
+.taxonomy-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 240px));
+    gap: 1rem;
+}
 
 .taxonomy-group {
     background-color: var(--secondary-color);
@@ -204,8 +209,9 @@ h2::after {
 .taxonomy-row {
     display: flex;
     gap: 2rem;
+    justify-content: center;
+    flex-wrap: wrap;
 }
-
 .genre {
     flex: 2;
 }
@@ -214,11 +220,7 @@ h2::after {
     flex: 1;
 }
 
-.taxonomy-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 1rem;
-}
+
 .taxonomy-description {
     font-size: 1.2rem;
     color: var(--text-color);
@@ -229,7 +231,7 @@ h2::after {
 }
 
 .tag-item {
-    position: relative;  /* 추가 */
+    position: relative;
     background-color: var(--tertiary-color);
     padding: 1rem;
     border-radius: 8px;
@@ -242,7 +244,6 @@ h2::after {
     box-sizing: border-box;
 }
 
-/* 툴팁 스타일 추가 */
 .tag-tooltip {
     position: absolute;
     top: 50%;
@@ -289,13 +290,11 @@ h2::after {
     color: var(--text-color);
 }
 
-/* 호버 효과 */
 .tag-item:hover .tag-tooltip {
     opacity: 1;
     visibility: visible;
 }
 
-/* 반응형 대응 */
 @media (max-width: 1200px) {
     .tag-tooltip {
         left: 50%;

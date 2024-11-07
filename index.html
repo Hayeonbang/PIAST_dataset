@@ -5,494 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PIAST Dataset</title>
     <link rel="stylesheet" href="./style.css">
-<style>
-        * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-
-        :root {
-        --bg-color: #0a0a0a;
-        --text-color: #ffffff;
-        --accent-color: #f66c6c;
-        --secondary-color: #1a1a1a;
-        --tertiary-color: #2a2a2a;
-        font-size: 20px; 
-    }
-
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-
-    body {
-        zoom: 75%;
-        font-family: 'Poppins', sans-serif;
-        background-color: var(--bg-color);
-        color: var(--text-color);
-        line-height: 1.6;
-        font-size: 1.2rem; 
-    }
-
-    header {
-        position: fixed;
-        width: 100%;
-        top: 0;
-        background-color: rgba(10, 10, 10, 0.8);
-        backdrop-filter: blur(10px);
-        z-index: 1000;
-    }
-
-    nav {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 1rem 5%;
-    }
-
-    .logo {
-        font-size: 1.9rem; 
-        font-weight: 600;
-        color: var(--accent-color);
-    }
-
-    nav ul {
-        display: flex;
-        list-style: none;
-    }
-
-    nav ul li {
-        margin-left: 2rem;
-    }
-
-    nav ul li a {
-        color: var(--text-color);
-        text-decoration: none;
-        font-weight: 300;
-        transition: color 0.3s ease;
-        font-size: 1.3rem; 
-    }
-
-    nav ul li a:hover {
-        color: var(--accent-color);
-    }
-
-    main {
-        padding-top: 8px;
-    }
-
-    section {
-        padding: 2rem 10%;
-    }
-
-    .hero {
-        padding: 120px 2rem 3rem;
-        text-align: center;
-        background-color: var(--bg-color);
-        border-bottom: 4px solid var(--accent-color);
-    }
-
-    .hero h1 {
-        font-size: 4rem;
-        font-weight: 700;
-        color: var(--text-color);
-        margin-bottom: 0.5rem;
-        line-height: 1.2;
-        letter-spacing: -1px;  
-    }
-
-    .hero p {
-        font-size: 1rem;
-        color: var(--text-color);
-        max-width: 1700px;
-        margin: 0.5rem auto 1rem;
-    }
-
-    .hero-links {
-        display: flex;
-        justify-content: center;
-        gap: 2rem;
-        flex-wrap: wrap;
-    }
-
-    .hero-link {
-        color: var(--accent-color);
-        text-decoration: none;
-        font-weight: 500;
-        font-size: 1.3rem;
-        transition: color 0.3s;
-        margin-bottom: 1rem;
-    }
-
-    .hero-link:hover {
-        color: var(--accent-color);
-        text-decoration: underline;
-        font-size: 1.2rem;
-    }
-
-    @media (min-width: 768px) {
-        .hero h1 {
-            font-size: 5rem; 
-        }
-        .hero p {
-            font-size: 1.4rem; 
-        }
-    }
-
-    h2 {
-        font-size: 2.5rem;
-        margin-bottom: 2rem;
-        position: relative;
-        display: inline-block;
-    }
-
-    h2::after {
-        content: '';
-        position: absolute;
-        left: 0;
-        bottom: -10px;
-        width: 50%;
-        height: 3px;
-        background-color: var(--accent-color);
-    }
-
-    .dataset-container {
-        display: flex;
-        justify-content: space-between;
-        gap: 2rem;
-    }
-
-    .dataset-column {
-        flex: 1;
-        background-color: var(--secondary-color);
-        padding: 2rem;
-        border-radius: 10px;
-        transition: transform 0.3s ease;
-    }
-
-    .dataset-column:hover {
-        transform: translateY(-10px);
-    }
-
-    .dataset-visual {
-        height: 200px;
-        background-color: var(--tertiary-color);
-        margin-top: 1rem;
-        border-radius: 5px;
-    }
-
-    .taxonomy-container {
-        display: flex;
-        flex-direction: column;
-        gap: 2rem;
-        max-width: 1200px; 
-        margin: 0 auto; 
-    }
-
-    .taxonomy-group {
-        background-color: var(--secondary-color);
-        padding: 1.5rem;
-        border-radius: 10px;
-        margin-bottom: 2rem;
-    }
-
-    .emotion-mood {
-        width: 100%; 
-    }
-
-    .tag-group {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 1rem;
-        margin-bottom: 2rem;
-        justify-content: center; 
-    }
-
-    .taxonomy-group h3 {
-        color: var(--accent-color);
-        margin-bottom: 1rem;
-        font-size: 1.6rem;
-    }
-
-    .taxonomy-row {
-        display: flex;
-        gap: 2rem;
-    }
-
-    .genre {
-        flex: 2;
-    }
-
-    .style {
-        flex: 1;
-    }
-
-    .taxonomy-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-        gap: 1rem;
-    }
-    .taxonomy-description {
-        font-size: 1.2rem;
-        color: var(--text-color);
-        margin-bottom: 2rem;
-        line-height: 1.6;
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    .tag-item {
-        position: relative;  /* 추가 */
-        background-color: var(--tertiary-color);
-        padding: 1rem;
-        border-radius: 8px;
-        transition: all 0.3s ease;
-        width: 250px;
-        height: 130px;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        box-sizing: border-box;
-    }
-
-    /* 툴팁 스타일 수정 */
-    .tag-tooltip {
-        position: absolute;
-        left: 100%;
-        top: 50%;
-        transform: translateY(-50%);
-        background-color: var(--secondary-color);
-        padding: 1.5rem;
-        border-radius: 8px;
-        width: 400px; /* 300px에서 400px로 증가 */
-        opacity: 0;
-        visibility: hidden;
-        transition: all 0.3s ease;
-        z-index: 100;
-        margin-left: 0px;
-        box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-    }
-
-    .tag-tooltip::before {
-        content: '';
-        position: absolute;
-        left: -10px;
-        top: 50%;
-        transform: translateY(-50%);
-        border-width: 8px;
-        border-style: solid;
-        border-color: transparent var(--secondary-color) transparent transparent;
-    }
-
-    .tag-tooltip h4 {
-        color: var(--accent-color);
-        margin-bottom: 1rem;
-        font-size: 1rem;
-        letter-spacing: 0.5px;
-    }
-
-    .tag-tooltip ul {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-        width: 100%; /* 추가: 전체 너비 사용 */
-    }
-
-    .tag-tooltip li {
-        font-size: 0.8rem;
-        line-height: 1.6;
-        color: var(--text-color);
-        display: flex;
-        align-items: flex-start;
-        margin-bottom: 0.5rem;
-        width: 100%;
-    }
-
-    .tag-tooltip li::before {
-        content: attr(data-agreement);
-        color: var(--accent-color);
-        min-width: 100px; /* 필요하다면 이 값도 줄일 수 있습니다 */
-        margin-right: 8px; /* 12px에서 8px로 줄임 */
-        font-weight: 500;
-        opacity: 0.9;
-        flex-shrink: 0;
-    }
-
-    /* 태그들이 한 줄에 표시되도록 수정 */
-    .tag-tooltip li span {
-        display: inline;
-        white-space: normal;
-    }
-
-    /* 반응형 대응 */
-    @media (max-width: 1400px) {
-        .tag-tooltip {
-            width: 350px; /* 작은 화면에서도 더 넓게 조정 */
-        }
-    }
-
-    .new-line {
-        clear: both;
-    }
-
-    .audio-player {
-        width: 100%;
-        height: 40px;
-    }
-
-    @media (max-width: 768px) {
-        .taxonomy-row {
-            flex-direction: column;
-        }
-    }
-
-    .results-container {
-        display: flex;
-        justify-content: space-between;
-        gap: 2rem;
-    }
-
-    .chart {
-        flex: 2;
-        height: 400px;
-        background-color: var(--secondary-color);
-        border-radius: 10px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-style: italic;
-    }
-
-    .results-summary {
-        flex: 1;
-        background-color: var(--secondary-color);
-        padding: 2rem;
-        border-radius: 10px;
-    }
-
-    .results-summary h3 {
-        color: var(--accent-color);
-        margin-bottom: 1rem;
-    }
-
-    .results-summary ul {
-        list-style-type: none;
-        padding: 0;
-        margin: 0;
-        display: flex;
-        flex-direction: column;
-        height: 100%;
-    }
-
-    .results-summary li {
-        flex: 1;
-        display: flex;
-        align-items: flex-start; /* 변경: center에서 flex-start로 */
-        padding: 10px 0;
-    }
-
-    .results-summary li::before {
-        content: "- ";
-        margin-right: 10px;
-        color: var(--accent-color);
-        flex-shrink: 0; /* 추가: 불릿이 줄바꿈되지 않도록 */
-        padding-top: 2px; /* 추가: 불릿을 약간 아래로 내림 */
-    }
-
-    footer {
-        text-align: center;
-        padding: 2rem;
-        background-color: var(--secondary-color);
-        margin-top: 4rem;
-    }
-
-    @media (max-width: 768px) {
-        .dataset-container, .results-container {
-            flex-direction: column;
-        }
-        
-        nav {
-            flex-direction: column;
-        }
-        
-        nav ul {
-            margin-top: 1rem;
-        }
-        
-        nav ul li {
-            margin-left: 0;
-            margin-right: 1rem;
-        }
-    }
-
-    .hero-subtitle {
-        font-size: 1.5rem;
-        color: var(--accent-color);
-        margin-bottom: 1rem;
-    }
-
-    .hero-description {
-        font-size: 1.1rem;
-        color: var(--text-color);
-        max-width: 800px;
-        margin: 2rem auto 0;
-        line-height: 1.6;
-    }
-
-    @media (min-width: 768px) {
-        .hero-subtitle {
-            font-size: 1.8rem;
-        }
-        .hero-description {
-            font-size: 1.2rem;
-        }
-    }
-
-    .hero-divider {
-        width: 50%;
-        margin: 1rem auto;
-        margin-bottom: 2rem;
-        border-bottom: 1px solid var(--accent-color);
-    }
-
-    .hero p.hero-description {
-        font-size: 1.25rem;
-        color: var(--text-color);
-        max-width: 1500px;
-        margin: 2rem auto 0;
-        line-height: 1.6;
-    }
-
-    .experiment-description {
-        margin-bottom: 2rem;
-        font-size: 1.2rem;
-        line-height: 1.6;
-        color: var(--text-color);
-        max-width: 100%; 
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    .results-container {
-        display: flex;
-        justify-content: space-between;
-        gap: 2rem;
-        flex-wrap: wrap; 
-    }
-
-    .chart, .results-summary {
-        flex: 1 1 300px;
-    }
-
-    .result-chart {
-        width: 100%;
-        height: auto;
-        max-height: 370px;
-        object-fit: contain;
-    }
-</style>
 </head>
 <body>
     <header>
@@ -514,8 +26,8 @@
                 <p class="hero-subtitle">A Piano Dataset with Audio, Symbolic, and Text Data</p>
                 <div class="hero-links">
                     <a href="https://github.com/Hayeonbang/PIAST" class="hero-link" target="_blank">Code</a>
-                    <a href="https://link-to-your-paper.pdf" class="hero-link" target="_blank">Paper</a>
-                    <a href="https://link-to-download-data" class="hero-link" target="_blank">Data</a>
+                    <a href="https://arxiv.org/abs/2411.02551" class="hero-link" target="_blank">Paper</a>
+                    <a href="https://huggingface.co/datasets/Hayeonbang/PIAST" class="hero-link" target="_blank">Data</a>
                 </div>
                 <hr class="hero-divider">
                 <p class="hero-description">
@@ -523,7 +35,7 @@
                     In addition to the audio and text data, PIAST includes <span style="color: var(--accent-color); font-weight: bold;">MIDI data</span>, transcribed through our transcription pipeline.
                     The dataset is<br> divided into <span style="color: var(--accent-color); font-weight: bold;">two subsets</span>: PIAST-YT and PIAST-AT, each with distinct text collection methods and research purposes. <br>
                     The dataset and the training weights are available on
-                    <a href="https://dataset-link" target="_blank" style="color: var(--text-color); font-weight: bold; text-decoration: underline;">this link</a>.
+                    <a href="https://huggingface.co/datasets/Hayeonbang/PIAST" target="_blank" style="color: var(--text-color); font-weight: bold; text-decoration: underline;">this link</a>.
                 </p>
             </div>
         </section>
@@ -553,7 +65,6 @@
                 <div class="taxonomy-group emotion-mood">
                     <h3>Emotion/Mood</h3>
                     
-                    <!-- 첫 번째 줄 그룹 -->
                     <div class="tag-group">
                         <div class="tag-item">
                             <div class="tag-name">Happy</div>
@@ -678,54 +189,101 @@
                         <div class="tag-item">
                             <div class="tag-name">Sad</div>
                             <audio class="audio-player" controls>
-                                <source src="sad.mp3" type="audio/mpeg">
+                                <source src="audio/sad.mp3" type="audio/mpeg">
                             </audio>
+                            <div class="tag-tooltip">
+                                <h4>Annotated Tags:</h4>
+                                <ul>
+                                    <li data-agreement="3 Agreements:"><span>Sad, Dark</span></li>
+                                    <li data-agreement="2 Agreements:"><span>Emotional</span></li>
+                                    <li data-agreement="1 Agreement:"><span>Tense, Intense/Grand, Classical, New-age</span></li>
+                                </ul>
+                            </div>
                         </div>
                         <div class="tag-item">
                             <div class="tag-name">Dark</div>
                             <audio class="audio-player" controls>
-                                <source src="dark.mp3" type="audio/mpeg">
+                                <source src="audio/dark.mp3" type="audio/mpeg">
                             </audio>
+                            <div class="tag-tooltip">
+                                <h4>Annotated Tags:</h4>
+                                <ul>
+                                    <li data-agreement="3 Agreements:"><span>Dark, Mysterious</span></li>
+                                    <li data-agreement="2 Agreements:"><span>Dreamy, Tense, New-age</span></li>
+                                    <li data-agreement="1 Agreement:"><span>Classical, Relaxing/Calm, Laid-back</span></li>
+                                </ul>
+                            </div>
                         </div>
                         <div class="tag-item">
                             <div class="tag-name">Tense</div>
                             <audio class="audio-player" controls>
-                                <source src="tense.mp3" type="audio/mpeg">
+                                <source src="audio/tense.mp3" type="audio/mpeg">
                             </audio>
-                        </div>
-                        <div class="tag-item">
-                            <div class="tag-name">Scary</div>
-                            <audio class="audio-player" controls>
-                                <source src="scary.mp3" type="audio/mpeg">
-                            </audio>
+                            <div class="tag-tooltip">
+                                <h4>Annotated Tags:</h4>
+                                <ul>
+                                    <li data-agreement="3 Agreements:"><span>Tense, Speedy</span></li>
+                                    <li data-agreement="2 Agreements:"><span>Intense/Grand, Mysterious, Dark, Playful</span></li>
+                                    <li data-agreement="1 Agreement:"><span>Difficult/Advanced, Passionate, New-age, Powerful, Pop-Piano Cover</span></li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
-        
-                    <!-- 네 번째 줄 그룹 -->
                     <div class="tag-group">
                         <div class="tag-item">
                             <div class="tag-name">Epic</div>
                             <audio class="audio-player" controls>
-                                <source src="epic.mp3" type="audio/mpeg">
+                                <source src="audio/epic.mp3" type="audio/mpeg">
                             </audio>
+                            <div class="tag-tooltip">
+                                <h4>Annotated Tags:</h4>
+                                <ul>
+                                    <li data-agreement="3 Agreements:"><span>Epic</span></li>
+                                    <li data-agreement="2 Agreements:"><span>New-age, Powerful</span></li>
+                                    <li data-agreement="1 Agreement:"><span>Passionate, Emotional, Upbeat/Energetic, Speedy</span></li>
+                                </ul>
                         </div>
                         <div class="tag-item">
                             <div class="tag-name">Intense/Grand</div>
                             <audio class="audio-player" controls>
-                                <source src="intense.mp3" type="audio/mpeg">
+                                <source src="audio/intense.wav" type="audio/wav">
                             </audio>
+                            <div class="tag-tooltip">
+                                <h4>Annotated Tags:</h4>
+                                <ul>
+                                    <li data-agreement="3 Agreements:"><span>Intense/Grand</span></li>
+                                    <li data-agreement="2 Agreements:"><span>Pop-Piano Cover, Upbeat/Energetic, Powerful, Difficult/Advanced, Speedy</span></li>
+                                    <li data-agreement="1 Agreement:"><span>Ballad, Sad, New-age, Emotional, Passionate, Epic</span></li>
+                                </ul>
+                            </div>
                         </div>
                         <div class="tag-item">
                             <div class="tag-name">Passionate</div>
                             <audio class="audio-player" controls>
-                                <source src="passionate.mp3" type="audio/mpeg">
+                                <source src="audio/passionate.mp3" type="audio/mpeg">
                             </audio>
+                            <div class="tag-tooltip">
+                                <h4>Annotated Tags:</h4>
+                                <ul>
+                                    <li data-agreement="3 Agreements:"><span>Passionate, Difficult/Advanced, Speedy</span></li>
+                                    <li data-agreement="2 Agreements:"><span>Powerful, Intense/Grand, Epic, Jazz</span></li>
+                                    <li data-agreement="1 Agreement:"><span>Dark, Tense, Funk, Upbeat/Energetic</span></li>
+                                </ul>
+                            </div>
                         </div>
                         <div class="tag-item">
                             <div class="tag-name">Powerful</div>
                             <audio class="audio-player" controls>
-                                <source src="powerful.mp3" type="audio/mpeg">
+                                <source src="audio/powerful.mp3" type="audio/mpeg">
                             </audio>
+                            <div class="tag-tooltip">
+                                <h4>Annotated Tags:</h4>
+                                <ul>
+                                    <li data-agreement="3 Agreements:"><span>Powerful, Swing, Difficult/Advanced, Upbeat/Energetic, Passionate, Intense/Grand, Pop-Piano Cover, Epic, Jazz</span></li>
+                                    <li data-agreement="2 Agreements:"><span>Speedy</span></li>
+                                    <li data-agreement="1 Agreement:"><span>Tense</span></li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -738,68 +296,156 @@
                             <div class = "tag-item">
                                 <div class="tag-name">Jazz</div>
                                 <audio class="audio-player" controls>
-                                    <source src="jazz.mp3" type="audio/mpeg">
+                                    <source src="audio/jazz.mp3" type="audio/mpeg">
                                 </audio>
+                                <div class="tag-tooltip">
+                                    <h4>Annotated Tags:</h4>
+                                    <ul>
+                                        <li data-agreement="3 Agreements:"><span>Jazz, Swing</span></li>
+                                        <li data-agreement="2 Agreements:"><span>Laid-back, Upbeat/Energetic, Difficult/Advanced</span></li>
+                                        <li data-agreement="1 Agreement:"><span>Happy, Mysterious, Playful</span></li>
+                                    </ul>
+                                </div>
                             </div>
                             <div class = "tag-item">
                                 <div class="tag-name">Blues</div>
                                 <audio class="audio-player" controls>
-                                    <source src="blues.mp3" type="audio/mpeg">
+                                    <source src="audio/blues.mp3" type="audio/mpeg">
                                 </audio>
+                                <div class="tag-tooltip">
+                                    <h4>Annotated Tags:</h4>
+                                    <ul>
+                                        <li data-agreement="3 Agreements:"><span>Blues, Jazz</span></li>
+                                        <li data-agreement="2 Agreements:"><span>Playful, Bright</span></li>
+                                        <li data-agreement="1 Agreement:"><span>Laid-back, Upbeat/Energetic, Tense</span></li>
+                                    </ul>
+                                </div>
                             </div>
                             <div class = "tag-item">
                                 <div class="tag-name">Funk</div>
                                 <audio class="audio-player" controls>
-                                    <source src="funk.mp3" type="audio/mpeg">
+                                    <source src="audio/funk.mp3" type="audio/mpeg">
                                 </audio>
+                                <div class="tag-tooltip">
+                                    <h4>Annotated Tags:</h4>
+                                    <ul>
+                                        <li data-agreement="3 Agreements:"><span>Funk, Swing, Difficult/Advanced, Happy, Bright, Pop-Piano Cover, Upbeat/Energetic, Jazz</span></li>
+                                        <li data-agreement="2 Agreements:"><span>Powerful, Passionate, Epic</span></li>
+                                        <li data-agreement="1 Agreement:"><span></span></li>
+                                    </ul>
+                                </div>
                             </div>
                             <div class = "tag-item">
                                 <div class="tag-name">Swing</div>
                                 <audio class="audio-player" controls>
-                                    <source src="swing.mp3" type="audio/mpeg">
+                                    <source src="audio/swing.mp3" type="audio/mpeg">
                                 </audio>
+                                <div class="tag-tooltip">
+                                    <h4>Annotated Tags:</h4>
+                                    <ul>
+                                        <li data-agreement="3 Agreements:"><span>Swing, Difficult/Advanced, Speedy, Jazz</span></li>
+                                        <li data-agreement="2 Agreements:"><span>Playful, Bright, Passionate</span></li>
+                                        <li data-agreement="1 Agreement:"><span>Happy, Upbeat/Energetic, Intense/Grand, Blues</span></li>
+                                    </ul>
+                                </div>
                             </div>
                             <div class = "tag-item">
                                 <div class="tag-name">Latin</div>
                                 <audio class="audio-player" controls>
-                                    <source src="latin.mp3" type="audio/mpeg">
+                                    <source src="audio/latin.mp3" type="audio/mpeg">
                                 </audio>
+                                <div class="tag-tooltip">
+                                    <h4>Annotated Tags:</h4>
+                                    <ul>
+                                        <li data-agreement="3 Agreements:"><span>Latin, Jazz, Playful</span></li>
+                                        <li data-agreement="2 Agreements:"><span>Speedy, Bright</span></li>
+                                        <li data-agreement="1 Agreement:"><span>Upbeat/Energetic, Happy, Dreamy</span></li>
+                                    </ul>
+                                </div>
                             </div>
                             <div class = "tag-item">
                                 <div class="tag-name">Bossan Nova</div>
                                 <audio class="audio-player" controls>
-                                    <source src="bossanova.mp3" type="audio/mpeg">
+                                    <source src="audio/bossanova.mp3" type="audio/mpeg">
                                 </audio>
+                                <div class="tag-tooltip">
+                                    <h4>Annotated Tags:</h4>
+                                    <ul>
+                                        <li data-agreement="3 Agreements:"><span>Bossan Nova, Latin, Jazz</span></li>
+                                        <li data-agreement="2 Agreements:"><span>Emotional</span></li>
+                                        <li data-agreement="1 Agreement:"><span>Laid-back, Relaxing/Calm, Mysterious, Dreamy, Bright</span></li>
+                                    </ul>
+                                </div>
                             </div>
                             <div class = "tag-item">
                                 <div class="tag-name">Ragtime</div>
                                 <audio class="audio-player" controls>
-                                    <source src="ragtime.mp3" type="audio/mpeg">
+                                    <source src="audio/ragtime.mp3" type="audio/mpeg">
                                 </audio>
+                                <div class="tag-tooltip">
+                                    <h4>Annotated Tags:</h4>
+                                    <ul>
+                                        <li data-agreement="3 Agreements:"><span>Ragtime, Cute, Playful, Jazz</span></li>
+                                        <li data-agreement="2 Agreements:"><span>Bright, Emotional</span></li>
+                                        <li data-agreement="1 Agreement:"><span>Passionate, Speedy, Upbeat/Energetic, Relaxing/Calm, Happy</span></li>
+                                    </ul>
+                                </div>
                             </div>
                             <div class = "tag-item">
                                 <div class="tag-name">Ballad</div>
                                 <audio class="audio-player" controls>
-                                    <source src="ballad.mp3" type="audio/mpeg">
+                                    <source src="audio/ballad.mp3" type="audio/mpeg">
                                 </audio>
+                                <div class="tag-tooltip">
+                                    <h4>Annotated Tags:</h4>
+                                    <ul>
+                                        <li data-agreement="3 Agreements:"><span>Ballad, Jazz</span></li>
+                                        <li data-agreement="2 Agreements:"><span>Relaxing/Calm, Dreamy</span></li>
+                                        <li data-agreement="1 Agreement:"><span>Dark, Sad, Tense, Mysterious, Emotional, Difficult/Advanced, Passionate, Intense/Grand, Playful, Epic</span></li>
+                                    </ul>
+                                </div>
                             </div>
                             <div class="tag-item">
                                 <div class="tag-name">New-age</div>
                                 <audio class="audio-player" controls>
-                                    <source src="newage.mp3" type="audio/mpeg">
+                                    <source src="audio/newage.mp3" type="audio/mpeg">
                                 </audio>
+                                <div class="tag-tooltip">
+                                    <h4>Annotated Tags:</h4>
+                                    <ul>
+                                        <li data-agreement="3 Agreements:"><span>New-age, Emotional</span></li>
+                                        <li data-agreement="2 Agreements:"><span>Relaxing/Calm, Happy, Bright</span></li>
+                                        <li data-agreement="1 Agreement:"><span>Passionate, Dreamy, Easy, Laid-back</span></li>
+                                    </ul>
+                                </div>
                             </div>
                             <div class = "tag-item">
                                 <div class="tag-name">Pop-Piano Cover</div>
                                 <audio class="audio-player" controls>
-                                    <source src="poppiano.mp3" type="audio/mpeg">
+                                    <source src="audio/poppiano.mp3" type="audio/mpeg">
                                 </audio>
+                                <div class="tag-tooltip">
+                                    <h4>Annotated Tags:</h4>
+                                    <ul>
+                                        <li data-agreement="3 Agreements:"><span>Pop-Piano Cover, Emotional</span></li>
+                                        <li data-agreement="2 Agreements:"><span>Happy, Bright, Ballad</span></li>
+                                        <li data-agreement="1 Agreement:"><span>Intense/Grand, Relaxing/Calm, Easy, Mysterious</span></li>
+                                    </ul>
+                                </div>
                             </div>
                             <div class="tag-item">
                                 <div class="tag-name">Classical</div>
                                 <audio class="audio-player" controls>
-                                    <source src="classical.mp3" type="audio/mpeg">
+                                    <source src="audio/classical.mp3" type="audio/mpeg">
                                 </audio>
+                                <div class="tag-tooltip">
+                                    <h4>Annotated Tags:</h4>
+                                    <ul>
+                                        <li data-agreement="3 Agreements:"><span>Classical, Passionate, Difficult/Advanced</span></li>
+                                        <li data-agreement="2 Agreements:"><span>Intense/Grand, Tense, Speedy</span></li>
+                                        <li data-agreement="1 Agreement:"><span>Powerful, Upbeat/Energetic, Dreamy, Mysterious, Dark, Epic</span></li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -809,26 +455,58 @@
                             <div class="tag-item">
                                 <div class="tag-name">Easy</div>
                                 <audio class="audio-player" controls>
-                                    <source src="easy.mp3" type="audio/mpeg">
+                                    <source src="audio/easy.mp3" type="audio/mpeg">
                                 </audio>
+                                <div class="tag-tooltip">
+                                    <h4>Annotated Tags:</h4>
+                                    <ul>
+                                        <li data-agreement="3 Agreements:"><span>Easy, Cute, Bright</span></li>
+                                        <li data-agreement="2 Agreements:"><span>Relaxing/Calm, New-age</span></li>
+                                        <li data-agreement="1 Agreement:"><span>Emotional, Happy</span></li>
+                                    </ul>
+                                </div>
                             </div>
                             <div class="tag-item">
                                 <div class="tag-name">Difficult/Advanced</div>
                                 <audio class="audio-player" controls>
-                                    <source src="difficult.mp3" type="audio/mpeg">
+                                    <source src="audio/difficult.mp3" type="audio/mpeg">
                                 </audio>
+                                <div class="tag-tooltip">
+                                    <h4>Annotated Tags:</h4>
+                                    <ul>
+                                        <li data-agreement="3 Agreements:"><span>Difficult/Advanced, Jazz</span></li>
+                                        <li data-agreement="2 Agreements:"><span>Passionate, Swing, Bright, Upbeat/Energetic</span></li>
+                                        <li data-agreement="1 Agreement:"><span>Intense/Grand, Playful, Dreamy, Pop-Piano Cover, Mysterious, Speedy</span></li>
+                                    </ul>
+                                </div>
                             </div>
                             <div class="tag-item">
                                 <div class="tag-name">Laid-back</div>
                                 <audio class="audio-player" controls>
-                                    <source src="laidback.mp3" type="audio/mpeg">
+                                    <source src="audio/laidback.mp3" type="audio/mpeg">
                                 </audio>
+                                <div class="tag-tooltip">
+                                    <h4>Annotated Tags:</h4>
+                                    <ul>
+                                        <li data-agreement="3 Agreements:"><span>Laid-back, Jazz</span></li>
+                                        <li data-agreement="2 Agreements:"><span>Mysterious</span></li>
+                                        <li data-agreement="1 Agreement:"><span>Emotional, Blues, Happy, Relaxing/Calm, Swing, Dreamy</span></li>
+                                    </ul>
+                                </div>
                             </div>
                             <div class="tag-item">
                                 <div class="tag-name">Speedy </div>
                                 <audio class="audio-player" controls>
-                                    <source src="speedy.mp3" type="audio/mpeg">
+                                    <source src="audio/speedy.mp3" type="audio/mpeg">
                                 </audio>
+                                <div class="tag-tooltip">
+                                    <h4>Annotated Tags:</h4>
+                                    <ul>
+                                        <li data-agreement="3 Agreements:"><span>Speedy, Passionate, Difficult/Advanced</span></li>
+                                        <li data-agreement="2 Agreements:"><span>Powerful, Intense/Grand, Epic, Jazz</span></li>
+                                        <li data-agreement="1 Agreement:"><span>Dark, Tense, Funk, Upbeat/Energetic</span></li>
+                                    </ul>
+                                </div>
                             </div>
 
                         </div>
@@ -861,7 +539,7 @@
     </main>
 
     <footer>
-        <p>&copy; 2023 PIAST Dataset. All rights reserved.</p>
+        <p>&copy; 2024 PIAST Dataset. All rights reserved.</p>
     </footer>
 
     <script src="script.js"></script>
